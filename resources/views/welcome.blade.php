@@ -69,16 +69,44 @@
 
         <!-- Start Form Col -->
         <div class="col-xs-5">
+
             <form action="{{ url('/newpost') }}" method="post">
-                    {{ csrf_field() }}
+                {{ csrf_field() }}
+                <div role="tabpanel">
+                      <!-- Nav tabs -->
+                      <ul class="nav nav-tabs" role="tablist">
+                      @foreach( LaravelLocalization::getSupportedLocales() as $key => $value)
+                         <li role="presentation" class="{{ $key == 'en' ? 'active' : '' }}">
+                            <a href="#{{ $value['name'] }}" aria-controls="{{ $value['name'] }}" role="tab" data-toggle="tab">
+                            {{ $value['name']}}</a>
+                         </li>
+                      @endforeach
+                      </ul>
+                      <br>
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+                          @foreach( LaravelLocalization::getSupportedLocales() as $key => $value)
+                             <div role="tabpanel" class="tab-pane {{ $key == 'en' ? 'active' : '' }}" id="{{ $value['name'] }}">
+                                <div class="form-group">
+                                    <label for="{{ $value['name']}}" >Title in {{ $value['name']}}</label >
+                                    <input class="form-control" type="text" name="title[{{$key}}]" placeholder="{{ $value['name']}}"> 
+                                </div>
 
-                    {!! BuildFields('title', null, 'text', ['id'=>'name', 'data-id' => '10']) !!}
-                    <br>
-                    {!! BuildFields('body', null, 'textarea', ['id'=>'name', 'data-id' => '10', 'rows'=>'10']) !!}
-                    <br>
-                    <input style="background-color: #26CAD3 !important; border: 1px solid #26CAD3;" type="submit" name="btn" class="btn-block btn-lg btn-danger">
+                                <div class="form-group">
+                                    <label for="{{ $value['name']}}" >Body in {{ $value['name']}}</label >
+                                    <textarea class="form-control" name="body[{{$key}}]" placeholder="Body text in {{ $value['name']}}" rows="10"></textarea>
+                                </div>
+                             </div>
+                          @endforeach
+                      </div>
 
-            </form>  
+                       <input style="background-color: #26CAD3 !important; border: 1px solid #26CAD3;" type="submit" name="btn" class="btn-block btn-lg btn-danger">
+
+
+                 </div>
+            </form>
+
+
         </div>
         <!-- End Form Col -->
 

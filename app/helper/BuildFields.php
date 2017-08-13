@@ -30,3 +30,4 @@ function BuildFields($name , $value = null , $type="text" ,$other = null){
 
     return $out;
 }
+
