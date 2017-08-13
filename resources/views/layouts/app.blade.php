@@ -66,6 +66,23 @@
                                 </ul>
                             </li>
                         @endif
+
+                      
+                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Language <span class="caret"></span>
+                                </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        @foreach(LaravelLocalization::getSupportedLocales() as $key => $value)
+                                            <li>
+                                                <a rel="alternate" hreflang="{{ $key }}" href="{{ LaravelLocalization::getLocalizedURL($key) }}">
+                                                    {{ $value['native'] }}
+                                                </a>
+                                            </li>                                    
+                                         @endforeach
+                                    </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>

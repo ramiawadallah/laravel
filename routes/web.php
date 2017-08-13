@@ -13,16 +13,22 @@
 
 // app/Http/routes.php
 
-Route::group(['prefix' => LaravelLocalization::setLocale('ar')], function()
+
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
 
 	Route::get('/', function () {
-	    return view('welcome');
+    	return view('welcome');
 	});
+
+	Route::get('/', 'RedirectPageController@start');
 
 	Auth::routes();
 
 	Route::get('/home', 'HomeController@index')->name('home');
+
+	Route::get('posts', 'admin\PostController@index');
+	Route::post('newpost', 'admin\PostController@store');
 	
 
 });
