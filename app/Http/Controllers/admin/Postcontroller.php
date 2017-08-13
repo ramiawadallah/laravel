@@ -40,8 +40,13 @@ class Postcontroller extends Controller
         //
         $post = new Post();
 
-        $post->title =  serialize($request->title);
+        
+        $post->title_ar = $request->title['ar'];
+        $post->title_en = $request->title['en'];
         $post->body  =  serialize($request->body);
+        $post->title =  serialize($request->title);
+
+
         $post->save();
         return redirect()->bacK();
     }
