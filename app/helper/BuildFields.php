@@ -1,5 +1,16 @@
 <?php 
 
+function SupportLocales(){
+    $supportLocales = \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getSupportedLocales();
+    return $supportLocales;
+}
+
+
+function FechData($data){
+    return unserialize($data)[\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getCurrentLocale()];
+}
+
+
 function BuildFields($name , $value = null , $type="text" ,$other = null){
     $lang = \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getSupportedLanguagesKeys();
     $out = "";
@@ -30,4 +41,19 @@ function BuildFields($name , $value = null , $type="text" ,$other = null){
 
     return $out;
 }
+
+
+
+
+
+
+
+
+                      
+                       
+                             
+                               
+                    
+
+
 
