@@ -70,7 +70,6 @@
         <!-- Start Form Col -->
         <div class="col-xs-5">
 
-
             <form action="{{ url('/newpost') }}" method="post">
                 {{ csrf_field() }}
                     <div role="tabpanel">
